@@ -1,0 +1,16 @@
+.build-venv/
+build/
+dist/
+__pycache__/
+*.pyc
+*.spec
+.DS_Store
+*.sqlite*
+*.log
+*.soc
+email.json
+mail_retry.json
+*.pem
+*.p12
+*.key
+*.mobileprovision

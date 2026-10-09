@@ -1,0 +1,26 @@
+name: Bug report
+description: 报告故障（不要上传私人短信或密码）
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: "请勿上传真实手机号、短信、IMSI/ICCID/IMEI、SMTP 密码、数据库或完整设备日志。可从应用菜单复制脱敏诊断信息。"
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: 脱敏诊断信息
+      description: 应用菜单 → 复制脱敏诊断信息；粘贴前请自行检查。
+  - type: textarea
+    id: behavior
+    attributes:
+      label: 问题、复现步骤与预期结果
+    validations:
+      required: true
+  - type: dropdown
+    id: model
+    attributes:
+      label: 是否已确认 Air780EHV_A11 型号
+      options:
+        - 已确认
+        - 未确认（不要刷本项目固件）
+
