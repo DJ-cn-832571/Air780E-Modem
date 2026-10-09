@@ -11,7 +11,7 @@ def main():
         try: interfaces=bridge.usb_interfaces()
         except Exception: interfaces=[]
         state=network_status.inspect(interfaces)
-        print(json.dumps({'version':'0.9.3','macOS':platform.mac_ver()[0],'architecture':platform.machine(),'usbInterfaces':interfaces,'systemServiceEnabled':state.get('serviceEnabled'),'linkConnected':state.get('connected'),'containsSMSOrCredentials':False},ensure_ascii=False,indent=2));return
+        print(json.dumps({'version':'0.9.6','macOS':platform.mac_ver()[0],'architecture':platform.machine(),'usbInterfaces':interfaces,'systemServiceEnabled':state.get('serviceEnabled'),'linkConnected':state.get('connected'),'containsSMSOrCredentials':False},ensure_ascii=False,indent=2));return
     if action=='email_config':
         print(json.dumps(email_forward.load(bridge.STORE),ensure_ascii=False)); return
     if action in ('email_save','email_validate'):

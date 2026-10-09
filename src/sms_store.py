@@ -87,3 +87,17 @@ def sending(store,ident,number,message):
 
 def outcome(store,ident,state,error=''):
     with connect(store) as db: db.execute('UPDATE outbox SET state=?,error=? WHERE id=?',(state,error,ident))
+
+def delete_sent(store,ids):
+    if not ids or any(not isinstance(value,str) or not value for value in ids):
+        raise ValueError('请先选择已发送记录。')
+    ids=list(dict.fromkeys(ids))
+    with connect(store) as db:
+        # Refuse the entire batch if any send is still being processed.
+        for ident in ids:
+            row=db.execute('SELECT state FROM outbox WHERE id=?',(ident,)).fetchone()
+            if row and row['state']=='sending': raise ValueError('发送中的记录不能删除，请等待最终结果。')
+        count=0
+        for ident in ids:
+            count+=db.execute('DELETE FROM outbox WHERE id=?',(ident,)).rowcount
+    return count

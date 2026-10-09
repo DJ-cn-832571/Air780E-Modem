@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.9.6
+
+- 制作方增加股票代码 832571；三语言界面，首次简体中文，切换保留草稿并记住选择。
+- 全部公开说明补充英文；历史 0.9.3 附件不变，补充双语发布说明。
+- Adds maker stock code 832571 and Simplified Chinese (default), English and Traditional Chinese UI; preserves drafts and saves language choice.
+- Adds English to all public explanatory documents and historical release notes, without replacing 0.9.3 binaries.
+
+## 0.9.5（本地，未发布 GitHub）
+
+- 已发送每行增加删除按钮，失败重发保留。
+- 号码／内容前增加选择框与表头全选，选择以记录 ID 保存，后台刷新不误选其他记录。
+- 列表底部批量删除，确认后仅永久删除当前所选本机发送记录，不撤回短信，不操作设备。
+- 当前加载列表最多 500 条；全选不包含列表外记录，发送中记录不可选择或删除。
+
+## 0.9.4 界面预览（本地，未发布 GitHub）
+
+- 参考 Router V1.3：三张状态卡、深绿圆角按钮、短信列表与发送表单左右分栏。
+- 原生辅助功能、字数计数、空列表、分类记录数、进度指示、任务详情及脱敏诊断入口。
+- 分类切换先清除旧选择，删除页明确显示“恢复所选”；空列表禁用清空按钮。
+- 原有上网、短信、邮件和烧录协议保持不变；不增加电话功能、不自动清空本机数据。
+
 ## 0.9.3
 
 - 状态后增加激活网卡按钮，只启用已匹配的 AirM2M 系统服务并重新检查；权限不足可打开系统网络设置手工启用。
@@ -39,3 +60,13 @@
 - 固件安装增加型号确认，固定官方下载版本和 SHA-256 校验。
 - 仓库及安装包不含专有蜂窝核心、个人号码、短信数据库和私人日志。
 - 16 项离线测试；沿用固件脚本 0.2.3。公开版未新增真实短信/烧录测试。
+
+## English — Previous changes
+
+- **0.9.5:** per-row Sent Delete, failed Resend retained, row/header checkboxes, stable ID selection, bottom batch deletion with confirmation; current loaded list only (up to 500), active sends protected. Initially local-only, included in 0.9.6.
+- **0.9.4:** Router V1.3-style cards/dark-green buttons and two-column SMS; native accessibility, counters, empty states, folder counts, progress/tasks/diagnostics; reset stale selections on folder change; no new phone feature or data clearing. Initially a local preview.
+- **0.9.3:** matched AirM2M activation and manual-settings fallback; About, sanitized diagnostics, single-instance protection, privacy/issue templates/source audit. Removes Beta from the version label but does not claim notarization or full hardware validation.
+- **0.9.1-beta.1:** fixes ECM-versus-system-status confusion, checks owned interface/service/link/IP every 5 seconds, respects disabled services and shows unknown when unverified. Separates ECM, link and Internet verification.
+- **0.9.0-beta.1:** maker website/contact; distinct activation/Internet status; confirmed permanent Deleted clearing including unloaded records, without touching Inbox/Sent/network. Opaque IDs prevent replay; monotonically increasing SMS indices keep new-email filters correct. 31 offline tests; no real SMS, flashing or data clearing by builds.
+- **0.8.0-beta.1:** five-bar RSRP/unknown state, failed resend with confirmation, reply prefilling, optional one-sender/three-recipient SMTP with TLS/Keychain, login check/history/new-only forwarding and no unknown-result retry. 27 mocked tests; no real SMTP secrets or actual test email. Connection backoff and authentication pause.
+- **0.7.0-beta.1:** initial independently packaged native GUI and backend with offline validation; hardware compatibility and signing limits documented.

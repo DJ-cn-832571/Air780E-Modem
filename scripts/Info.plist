@@ -4,8 +4,8 @@
 <key>CFBundleExecutable</key><string>Air780E Modem</string>
 <key>CFBundleIdentifier</key><string>io.github.air780e.modem</string>
 <key>CFBundleName</key><string>Air780E Modem</string>
-<key>CFBundleShortVersionString</key><string>0.9.3</string>
-<key>CFBundleVersion</key><string>12</string>
+<key>CFBundleShortVersionString</key><string>0.9.6</string>
+<key>CFBundleVersion</key><string>15</string>
 <key>LSMinimumSystemVersion</key><string>26.0</string>
 <key>NSHighResolutionCapable</key><true/>
 </dict></plist>

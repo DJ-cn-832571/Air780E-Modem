@@ -120,6 +120,10 @@ def main():
     if action=='list_json':
         kind=sys.argv[2] if len(sys.argv)>2 else 'inbox'
         print(json.dumps(sms_store.rows(STORE,kind),ensure_ascii=False)); return
+    if action=='delete_sent':
+        if len(sys.argv)<4 or sys.argv[2]!='--confirm-permanent': raise ValueError('删除发送记录需要明确确认')
+        count=sms_store.delete_sent(STORE,sys.argv[3:])
+        print('已删除 '+str(count)+' 条本机发送记录；不可恢复，不会撤回短信。');return
     if action in ('delete_sms','restore_sms'):
         sms_store.archive(STORE,sys.argv[2:],restore=action=='restore_sms')
         print('已恢复所选短信。' if action=='restore_sms' else '已移入已删除列表，可恢复。'); return

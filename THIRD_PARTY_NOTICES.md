@@ -9,3 +9,13 @@
 
 上游：https://github.com/openLuat/LuatOS ，https://github.com/wendal/luatos-cli ，https://pyinstaller.org/ ，https://www.python.org/ 。
 
+## English — Third-party notices
+
+- Project-owned Swift/Python/Lua business logic: root MIT License.
+- firmware/lua/sys.lua: openLuat/LuatOS, MIT, Copyright 2019–2026 openLuat & AirM2M; full text in LICENSES/LuatOS-MIT.txt. sysplus.lua is this project's compatibility entry.
+- luatos-cli: Wendal Chen, MIT; LICENSES/luatos-cli-MIT.txt. Pinned upstream download at runtime; neither the tool nor its bundled vendor boot binary is redistributed in the app/repository. Tool dependencies retain their upstream licenses.
+- V2052 Air780EHV_1 cellular core: proprietary vendor asset, not redistributed or granted MIT rights by this project. Downloaded from the official CDN under vendor terms.
+- App includes CPython and its build's third-party libraries; their licenses are bundled in LICENSES.
+- PyInstaller: GPL-2.0-or-later with a bootloader exception allowing generated standalone-app redistribution. Do not assume all dependencies are MIT.
+
+Upstream: https://github.com/openLuat/LuatOS · https://github.com/wendal/luatos-cli · https://pyinstaller.org/ · https://www.python.org/ . Original license texts are retained, not replaced by translations.

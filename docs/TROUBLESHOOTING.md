@@ -11,3 +11,17 @@
 - macOS 安全拦截：核对来源和发布校验清单，按系统单应用批准流程处理；不要关闭 Gatekeeper。
 - 烧录写入完成但校验失败：保留完整日志，重插后点击设备状态；不要立即反复烧录。
 
+## English — Troubleshooting
+
+- No matching firmware protocol: USB presence alone is not proof that the project's Lua protocol is running. Check model/cable/power and Device status. Do not flash based only on generic USB IDs.
+- Control port cannot be identified safely: connect one module, reconnect and inspect power/cable. Keep logs; do not guess another port, short pins or flash a different model.
+- Download fails: first flashing needs another working network and access to GitHub/CDN. TLS and SHA checks are never bypassed.
+- SMS not ready: check antenna, SIM registration and carrier SMS service. Wait rather than repeatedly sending.
+- Send fails: inspect Sent details. Unknown is not failure; verify reception before retrying to avoid charges. No automatic resend.
+- No incoming SMS: keep the app running and sync; the SIM must support SMS. Deletion changes the local list, not SIM storage. Incoming behavior across hardware/carriers still needs regression testing.
+- ECM starts but browser traffic uses another connection: inspect service priority and VPN. The app does not rewrite default routes.
+- No own phone number: a SIM may not store it; this does not make the SIM invalid.
+- macOS blocks the app: verify source/checksums and use per-app approval; do not disable Gatekeeper.
+- Flash writes but verification fails: keep complete logs, reconnect, check Device status; do not repeatedly reflash without diagnosis.
+- Sent delete/select-all unavailable: active sends are protected; wait. Select-all covers only the loaded list (up to 500). Deleted sent records cannot be restored.
+- Switch language at the top; changes are blocked during tasks or confirmations. Technical/vendor logs and user content retain their original language.

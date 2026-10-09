@@ -14,14 +14,15 @@ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources/backend" "$APP/Contents/
 cp -R build/backend/modem-backend/. "$APP/Contents/Resources/backend/"
 cp -R firmware/lua "$APP/Contents/Resources/firmware/"
 cp -R LICENSES "$APP/Contents/Resources/"
-cp LICENSE README.md "$APP/Contents/Resources/"
+cp LICENSE README.md README.en.md "$APP/Contents/Resources/"
 cp -R docs "$APP/Contents/Resources/"
 cp CHANGELOG.md THIRD_PARTY_NOTICES.md SECURITY.md CONTRIBUTING.md "$APP/Contents/Resources/"
 cp scripts/Info.plist "$APP/Contents/Info.plist"
-xcrun swiftc -target arm64-apple-macos26.0 -module-cache-path build/swift-module-cache src/ModemApp.swift src/EmailSettings.swift -framework Cocoa -framework Security -o "$APP/Contents/MacOS/Air780E Modem"
+xcrun swiftc -target arm64-apple-macos26.0 -module-cache-path build/swift-module-cache src/ModemApp.swift src/CommercialUI.swift src/Localization.swift src/EmailSettings.swift -framework Cocoa -framework Security -o "$APP/Contents/MacOS/Air780E Modem"
 codesign --force --deep --sign "${SIGN_IDENTITY:--}" "$APP"
 "$APP/Contents/Resources/backend/modem-backend" --self-test
 codesign --verify --deep --strict "$APP"
+"$APP/Contents/MacOS/Air780E Modem" --self-test-localization
 if [ -d "build/Air780E Modem.app" ]; then
     PREVIOUS="$(mktemp -d "$PWD/build/previous-app.XXXXXX")"
     mv "build/Air780E Modem.app" "$PREVIOUS/"

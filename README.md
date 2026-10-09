@@ -1,11 +1,15 @@
 # Air780E Modem for macOS
 
+简体中文 · [English](README.en.md)
+
+最新版本：**0.9.6**，简体中文（默认）、English、繁體中文可切换，保留草稿、号码与分类并记住语言。加入制作方股票代码和双语文档；见 [发布说明](docs/RELEASE-0.9.6.md)。保留 [已发送管理](docs/UPDATE-0.9.5.md) 和 [Router V1.3 风格界面](docs/UI-0.9.4.md)。历史 v0.9.3 安装包不变。此更新不包含电话功能，也不代表新增 Apple 公证。
+
 用 Air780EHV USB 模块为 Mac 提供蜂窝上网、短信发送和收件箱。
 独立 Cocoa 界面，Python 控制程序已随安装包打包；普通使用无需安装 Python、Homebrew 或 Xcode。
 
-制作方：点击网络 · www.DJ.cn。联系方式：cailiwen@dj.cn · 蔡立文。软件底部提供制作方网站入口与可复制的联系方式。
+制作方：点击网络 · 股票代码：832571 · www.DJ.cn。联系方式：cailiwen@dj.cn · 蔡立文。软件底部提供制作方网站入口与可复制的联系方式；代码按发布者要求展示，不构成投资建议。
 
-> **0.9.3 发布版，非官方项目。本次安装包要求 Apple Silicon Mac、macOS 26 或更新版本，以及已核对型号的 Air780EHV_A11（EC718HM）。不是所有 Air780E 通用驱动。禁止对 Air780E、Air780EHM、Air780EP 等不同型号烧录本项目固件。当前安装包尚未 Apple 公证；完整验证范围请查看发布说明。**
+> **0.9.6 发布版，非官方项目。本次安装包要求 Apple Silicon Mac、macOS 26 或更新版本，以及已核对型号的 Air780EHV_A11（EC718HM）。不是所有 Air780E 通用驱动。禁止对 Air780E、Air780EHM、Air780EP 等不同型号烧录本项目固件。当前安装包尚未 Apple 公证；完整验证范围请查看发布说明。**
 
 ## 安装与使用
 
@@ -36,7 +40,7 @@ LTE RSRP 使用近似五格分级：≥ -85 dBm 为 5 格；-95 至 -86 为 4 �
 ## 验证范围与限制
 
 - 原有硬件版已验证 Air780EHV_A11 ECM 绑定接口上网，以及一条中文测试短信的运营商提交成功。
-- 本公开版的独立打包与通用端口发现已通过自动测试和离线后端自检；0.8 邮件转发经模拟 SMTP 测试，未使用真实邮箱发送。安装前请视为 beta。
+- 本公开版的独立打包与通用端口发现已通过自动测试和离线后端自检；0.8 邮件转发经模拟 SMTP 测试，未使用真实邮箱发送。安装前请了解验证范围，不能视为全面实测。
 - “发送成功”表示模块/运营商接口接受提交，不等于对方手机已经收到；目前不提供送达回执。
 - 真实入站短信、跨运营商和长短信仍需用户验证。模块 RAM 缓存最多约 100 条；应用关闭时收到的未同步短信，重启后可能丢失。
 - 1–500 字符普通中文、英文、标点；不支持 emoji 等非 BMP 字符。长短信可能按多条计费。需要 SIM 和运营商开通相关业务；物联网卡可能只允许上网。
@@ -62,7 +66,7 @@ bash scripts/package_release.sh
 
 源码入口 src/backend_entry.py，UI 在 src/ModemApp.swift，设备脚本在 firmware/lua/main.lua。
 开发者命令示例：python3 src/backend_entry.py status。不要在不了解费用与后果时运行 send_sms 或 install_firmware。
-构建不自动访问 USB、烧录或发送短信。dist/0.9.3/ 中生成 app ZIP、DMG、源码 ZIP 和 SHA256SUMS.txt，并自动审计源码包。
+构建不自动访问 USB、烧录或发送短信。dist/<版本号>/ 中生成 app ZIP、DMG、源码 ZIP 和 SHA256SUMS.txt，并自动审计源码包。
 
 ## 文档
 

@@ -7,21 +7,31 @@
 
 ```sh
 git init
-git add src firmware scripts docs LICENSES .github README.md LICENSE CHANGELOG.md SECURITY.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md requirements-build.txt .gitignore
-git commit -m "Release 0.9.3"
+git add src firmware scripts docs LICENSES .github README.md README.en.md LICENSE CHANGELOG.md SECURITY.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md requirements-build.txt .gitignore
+git commit -m "Release 0.9.6"
 git branch -M main
 git remote add origin https://github.com/YOUR_ACCOUNT/Air780E-Modem.git
 git push -u origin main
 ```
 
-3. 准备 Release，标签 v0.9.3。上传 dist/0.9.3/ 下两个安装包、源码 ZIP 和 SHA256SUMS.txt，并使用 docs/RELEASE-0.9.3.md 作为说明。版本号不再带 Beta；如仍未完成 Developer ID、公证或面向目标用户的验收，建议先标记 Pre-release，完成后再转正式，而不是隐瞒限制。
+3. 准备 Release，标签 v0.9.6。上传 dist/0.9.6/ 下两个安装包、源码 ZIP 和 SHA256SUMS.txt，并使用 docs/RELEASE-0.9.6.md 作为说明。版本号不再带 Beta；如仍未完成 Developer ID、公证或面向目标用户的验收，建议先标记 Pre-release，完成后再转正式，而不是隐瞒限制。
 4. Release 说明必须注明：Apple Silicon、macOS 26+、仅 Air780EHV_A11、首次烧录需联网、覆盖原固件、不含原固件备份、尚未公证，以及已核验和未核验范围。
 5. 不要把 .build-venv、build、dist、*.soc、*.sqlite、设备日志或实际手机号加入源码仓库。自动测试仅执行模拟用例。
 
 ## 正式签名与 Apple 公证
 
-本次 beta 使用 ad-hoc 签名，不能假称已公证。正式对外发布建议用自己的 Developer ID Application 证书，对内嵌后端及其动态库从内向外签名，启用 hardened runtime；Python 所需 entitlements 必须评估而非盲目复制。最后签主应用，并执行 codesign --verify --deep --strict。
+当前版本使用 ad-hoc 签名，不能假称已公证。正式对外发布建议用自己的 Developer ID Application 证书，对内嵌后端及其动态库从内向外签名，启用 hardened runtime；Python 所需 entitlements 必须评估而非盲目复制。最后签主应用，并执行 codesign --verify --deep --strict。
 
 把已正确签名的应用压缩后用 xcrun notarytool submit 提交（使用自己钥匙串中的凭据），等待 Accepted 后对应用 stapler staple，再重新生成安装包和校验清单。当前脚本的 SIGN_IDENTITY 仅支持基础签名，不是完整公证流程。不要发布 Apple 密码、证书私钥或 CI secret。
 
 GitHub Actions 工作流只运行离线测试，不自动创建 Release、烧录设备或发短信。
+
+## English — Publishing
+
+Publish only this project, never its parent workspace, private development folder or Library databases. Prefer a clean checkout/staging copy of the allowlisted source archive. Initialize Git, add only src/firmware/scripts/docs/LICENSES/.github and public root documentation/build requirements, commit, set main and push to your own repository.
+
+Package the app; upload its DMG, app ZIP, source ZIP and SHA256SUMS for the corresponding tag. Include matching bilingual release notes. Clearly state Apple Silicon/macOS 26+, Air780EHV_A11 only, online first flashing, overwriting/no original backup, lack of notarization and actual validation limits. Historical 0.9.3 assets remain unchanged; bilingual notes may be updated without changing those binaries.
+
+Do not commit build, dist, venv, proprietary .soc, databases, logs, personal numbers, email settings, passwords or private keys. CI runs offline mocked tests only, never sends SMS/flashes/releases automatically.
+
+For Developer ID distribution, sign embedded backend/libraries inside-out, enable hardened runtime and assess Python entitlements rather than blindly copying them. Sign the outer app and verify deeply/strictly. Submit a signed ZIP with notarytool using your own Keychain profile; after Accepted, staple the app and regenerate artifacts/checksums. The current scripts' identity parameter is not a complete notarization workflow. Never publish account passwords, certificate keys or CI secrets. Until signing and acceptance testing are complete, consider a pre-release and do not hide restrictions.

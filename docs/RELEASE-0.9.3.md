@@ -32,4 +32,18 @@ SMTP 真实投递、钥匙串实际保存、长短信/跨运营商、其他 Mac 
 ## GitHub Release 附件
 
 上传 dist/0.9.3/ 中的 DMG、app ZIP、源码 ZIP 和 SHA256SUMS.txt，不上传父工作区、build、.build-venv、短信目录或应用备份。
-GitHub 发布地址：https://github.com/aileventkaya-netizen/Air780E-Modem/releases/tag/v0.9.3
+GitHub 发布地址：https://github.com/DJ-cn-832571/Air780E-Modem/releases/tag/v0.9.3
+
+## English — Air780E Modem 0.9.3
+
+Independent community software, not an official LuatOS product. The non-Beta version label is not notarization or universal validation.
+
+Requires Apple Silicon/macOS 26+ and Air780EHV_A11/EC718HM. Intel/other models unsupported. Python/Homebrew not required for use. Ad-hoc signed only, not Developer ID signed/notarized; complete signing before broad distribution.
+
+Updates: matched system AirM2M service/link/IP state rather than ECM-only state; Enable adapter for the verified USB service with recheck and manual Network settings fallback on permission failure. Wi-Fi/DNS/VPN/default routes/APN are unchanged. Service activation is not guaranteed Internet access. Five-bar signal, SMS entry/reply/failed resend/Deleted clearing and up to three forwarding addresses remain. About, sanitized diagnostics, single-instance protection and privacy docs are added. Public archives exclude personal data, passwords, logs and proprietary core firmware.
+
+Verified: offline tests/native UI, Disabled-state detection, prior bound ECM HTTPS and short Chinese SMS submission, list/reply/resend confirmations and empty local/module cache after authorized cleanup. Adapter mutation was mocked, not forced during packaging. Real SMTP/Keychain persistence, long/cross-carrier SMS and other Macs were not fully validated.
+
+SMS may incur charges; acceptance is not delivery. Forwarding defaults off and sends only newly synced messages to trusted addresses, possibly including sensitive codes. Emptying Deleted is irreversible local deletion, not SIM clearing or secure erasure. Flashing overwrites core/scripts, has no original backup and first downloads verified official assets over another working connection.
+
+Release attachments: DMG, app ZIP, source ZIP, SHA256SUMS. Historical 0.9.3 binaries do not include later UI/language/sent-delete features. [Download 0.9.3](https://github.com/DJ-cn-832571/Air780E-Modem/releases/tag/v0.9.3).

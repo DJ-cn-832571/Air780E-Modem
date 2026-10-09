@@ -1,26 +1,25 @@
 name: Bug report
-description: 报告故障（不要上传私人短信或密码）
+description: 报告故障 / Report a bug (no private SMS or passwords)
 title: "[Bug] "
 body:
   - type: markdown
     attributes:
-      value: "请勿上传真实手机号、短信、IMSI/ICCID/IMEI、SMTP 密码、数据库或完整设备日志。可从应用菜单复制脱敏诊断信息。"
+      value: "请勿上传真实手机号、短信、IMSI/ICCID/IMEI、SMTP 密码、数据库或完整日志。 / Do not post SMS, phone numbers, SIM identifiers, passwords, databases or full logs. Use sanitized diagnostics and review before sharing."
   - type: textarea
     id: diagnostics
     attributes:
-      label: 脱敏诊断信息
-      description: 应用菜单 → 复制脱敏诊断信息；粘贴前请自行检查。
+      label: 脱敏诊断 / Sanitized diagnostics
+      description: 应用菜单复制诊断；检查后粘贴。 / Copy from the app menu; review before pasting.
   - type: textarea
     id: behavior
     attributes:
-      label: 问题、复现步骤与预期结果
+      label: 问题、步骤与预期 / Problem, steps and expected behavior
     validations:
       required: true
   - type: dropdown
     id: model
     attributes:
-      label: 是否已确认 Air780EHV_A11 型号
+      label: 是否确认型号 / Confirmed Air780EHV_A11 model?
       options:
-        - 已确认
-        - 未确认（不要刷本项目固件）
-
+        - 已确认 / Confirmed
+        - 未确认，不要烧录 / Not confirmed, do not flash

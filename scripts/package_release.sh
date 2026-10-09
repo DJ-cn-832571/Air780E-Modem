@@ -3,7 +3,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 mkdir -p dist build
 IMAGE="$(mktemp -d "$PWD/build/dmg-stage.XXXXXX")"
-VERSION="0.9.3"
+VERSION="$(/usr/libexec/PlistBuddy -c 'Print CFBundleShortVersionString' 'build/Air780E Modem.app/Contents/Info.plist')"
 OUT="dist/$VERSION"
 mkdir -p "$OUT"
 cp -R "build/Air780E Modem.app" "$IMAGE/"
@@ -13,7 +13,7 @@ ditto -c -k --sequesterRsrc --keepParent "build/Air780E Modem.app" "$OUT/Air780E
 hdiutil create -ov -volname "Air780E Modem" -srcfolder "$IMAGE" -format UDZO "$OUT/Air780E-Modem-$VERSION-macos-arm64.dmg"
 COPY="$(mktemp -d /private/tmp/air780e-source.XXXXXX)"
 mkdir "$COPY/Air780E-Modem"
-cp -R src firmware scripts docs LICENSES .github README.md LICENSE CHANGELOG.md SECURITY.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md requirements-build.txt .gitignore "$COPY/Air780E-Modem/"
+cp -R src firmware scripts docs LICENSES .github README.md README.en.md LICENSE CHANGELOG.md SECURITY.md CONTRIBUTING.md THIRD_PARTY_NOTICES.md requirements-build.txt .gitignore "$COPY/Air780E-Modem/"
 find "$COPY/Air780E-Modem" -name __pycache__ -type d -exec /bin/rm -r {} +
 ditto -c -k --keepParent "$COPY/Air780E-Modem" "$OUT/Air780E-Modem-$VERSION-source.zip"
 "${PYTHON:-python3}" scripts/check_release.py "$OUT/Air780E-Modem-$VERSION-source.zip"
